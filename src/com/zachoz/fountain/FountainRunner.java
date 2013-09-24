@@ -24,9 +24,12 @@ public class FountainRunner {
                     World world = fountain.getLocation().getWorld();
                     FallingBlock block = world.spawnFallingBlock(fountain.getLocation(), Material.WATER, (byte) 4);
 
-                    float x = (float) -0.1 + (float) (Math.random() / 8);
+                    float x = (float) (Math.random() / 12);
                     float y = (float) 0.7;
-                    float z = (float) 0.1 + (float) (Math.random() / -8);
+                    float z = (float) Math.random() / 12;
+
+                    if (Math.random() > 0.5) x = x - (x * 2);
+                    if (Math.random() > 0.5) z = z - (z * 2);
 
                     block.setVelocity(new Vector(x, y, z));
                     block.setDropItem(false);
@@ -37,11 +40,5 @@ public class FountainRunner {
             }
         }.runTaskTimer(FountainPlugin.getInstance(), 3L, 3L);
     }
-
-    /* -- Sprinker vectors
-    float x = (float) -0.1 + (float) (Math.random());
-        float y = (float) 1;
-        float z = (float) -0.1 + (float) (Math.random());
-     */
 
 }
